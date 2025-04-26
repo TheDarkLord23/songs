@@ -1,0 +1,232 @@
+<html lang="bg">
+	<head>
+		<meta charset="UTF-8">
+		<title>Таблица с песни</title>
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<div class="controls">
+			<input type="text" id="searchInput" placeholder="Търси">
+
+			<div class="sort-dropdown">
+				<button id="sortBtn">Сортиране ▾</button>
+				<ul id="sortMenu" class="hidden">
+					<li data-col="0" data-order="asc">По номер ↑</li>
+					<li data-col="0" data-order="desc">По номер ↓</li>
+					<li data-col="1" data-order="asc">По заглавие ↑</li>
+					<li data-col="1" data-order="desc">По заглавие ↓</li>
+				</ul>
+			</div>
+		</div>
+
+		<table id="documentsTable">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Заглавие</th>
+					<th>Презентация</th>
+					<th>Текст</th>
+					<th>Ноти</th>
+					<th>Музика</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Народи, братски племена</td>
+					<td>
+						<a href="path/to/1.pptx" download>1.pptx</a>
+					</td>
+					<td>
+						<a href="path/to/1.txt" download>1.txt</a>
+					</td>
+					<td>
+						<a href="path/to/1.pdf" download>1.pdf</a>
+					</td>
+					<td>
+						<a href="path/to/1.mp3" download>1.mp3</a>
+					</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Аз ще възпея Теб, Исусе</td>
+					<td>
+						<a href="path/to/2.pptx" download>2.pptx</a>
+					</td>
+					<td>
+						<a href="path/to/2.txt" download>2.txt</a>
+					</td>
+					<td>
+						<a href="path/to/2.pdf" download>2.pdf</a>
+					</td>
+					<td>
+						<a href="path/to/2.mp3" download>2.mp3</a>
+					</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Вярвам в Теб, Боже силен</td>
+					<td>
+						<a href="path/to/3.pptx" download>3.pptx</a>
+					</td>
+					<td>
+						<a href="path/to/3.txt" download>3.txt</a>
+					</td>
+					<td>
+						<a href="path/to/3.pdf" download>3.pdf</a>
+					</td>
+					<td>
+						<a href="path/to/3.mp3" download>3.mp3</a>
+					</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Благослови, душо моя, Господа</td>
+					<td>
+						<a href="path/to/4.pptx" download>4.pptx</a>
+					</td>
+					<td>
+						<a href="path/to/4.txt" download>4.txt</a>
+					</td>
+					<td>
+						<a href="path/to/4.pdf" download>4.pdf</a>
+					</td>
+					<td>
+						<a href="path/to/4.mp3" download>4.mp3</a>
+					</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Ще възпея Господа с песен нова</td>
+					<td>
+						<a href="path/to/5.pptx" download>5.pptx</a>
+					</td>
+					<td>
+						<a href="path/to/5.txt" download>5.txt</a>
+					</td>
+					<td>
+						<a href="path/to/5.pdf" download>5.pdf</a>
+					</td>
+					<td>
+						<a href="path/to/5.mp3" download>5.mp3</a>
+					</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>Исуса, Ти си моя светлина</td>
+					<td>
+						<a href="path/to/6.pptx" download>6.pptx</a>
+					</td>
+					<td>
+						<a href="path/to/6.txt" download>6.txt</a>
+					</td>
+					<td>
+						<a href="path/to/6.pdf" download>6.pdf</a>
+					</td>
+					<td>
+						<a href="path/to/6.mp3" download>6.mp3</a>
+					</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>Твоят път ме води, Господи</td>
+					<td>
+						<a href="path/to/7.pptx" download>7.pptx</a>
+					</td>
+					<td>
+						<a href="path/to/7.txt" download>7.txt</a>
+					</td>
+					<td>
+						<a href="path/to/7.pdf" download>7.pdf</a>
+					</td>
+					<td>
+						<a href="path/to/7.mp3" download>7.mp3</a>
+					</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>Благодарете Господу</td>
+					<td>
+						<a href="path/to/8.pptx" download>8.pptx</a>
+					</td>
+					<td>
+						<a href="path/to/8.txt" download>8.txt</a>
+					</td>
+					<td>
+						<a href="path/to/8.pdf" download>8.pdf</a>
+					</td>
+					<td>
+						<a href="path/to/8.mp3" download>8.mp3</a>
+					</td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>Тебе, Христе, славим</td>
+					<td>
+						<a href="path/to/9.pptx" download>9.pptx</a>
+					</td>
+					<td>
+						<a href="path/to/9.txt" download>9.txt</a>
+					</td>
+					<td>
+						<a href="path/to/9.pdf" download>9.pdf</a>
+					</td>
+					<td>
+						<a href="path/to/9.mp3" download>9.mp3</a>
+					</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>Силен си, Господи</td>
+					<td>
+						<a href="path/to/10.pptx" download>10.pptx</a>
+					</td>
+					<td>
+						<a href="path/to/10.txt" download>10.txt</a>
+					</td>
+					<td>
+						<a href="path/to/10.pdf" download>10.pdf</a>
+					</td>
+					<td>
+						<a href="path/to/10.mp3" download>10.mp3</a>
+					</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>Мир, като река</td>
+					<td>
+						<a href="path/to/11.pptx" download>11.pptx</a>
+					</td>
+					<td>
+						<a href="path/to/11.txt" download>11.txt</a>
+					</td>
+					<td>
+						<a href="path/to/11.pdf" download>11.pdf</a>
+					</td>
+					<td>
+						<a href="path/to/11.mp3" download>11.mp3</a>
+					</td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>В моето сърце живееш Ти</td>
+					<td>
+						<a href="path/to/12.pptx" download>12.pptx</a>
+					</td>
+					<td>
+						<a href="path/to/12.txt" download>12.txt</a>
+					</td>
+					<td>
+						<a href="path/to/12.pdf" download>12.pdf</a>
+					</td>
+					<td>
+						<a href="path/to/12.mp3" download>12.mp3</a>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+		<script src="script.js"></script>
+	</body>
+</html>
