@@ -8,8 +8,10 @@ searchInput.addEventListener("keyup", function () {
   Array.from(tableBody.rows).forEach((row) => {
     const num = row.cells[0].textContent.toLowerCase();
     const title = row.cells[1].textContent.toLowerCase();
-    row.style.display =
-      num.includes(filter) || title.includes(filter) ? "" : "none";
+    const hidden = (row.dataset.hiddenTitles || "").toLowerCase();
+    const match =
+      num.includes(filter) || title.includes(filter) || hidden.includes(filter);
+    row.style.display = match ? "" : "none";
   });
 });
 

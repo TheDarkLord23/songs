@@ -3,24 +3,28 @@
 		<meta charset="UTF-8">
 
 		<link href="https://fonts.googleapis.com/css2?
-						      family=Noto+Sans:wght@400;700&
-						      family=Noto+Serif:wght@400;700&
-						      display=swap" rel="stylesheet">
+								family=Noto+Sans:wght@400;700&
+								family=Noto+Serif:wght@400;700&
+								display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
 		<div class="controls">
-			<input type="text" id="searchInput" placeholder="Търси">
+			<input type="text" id="searchInput" class="search" placeholder="Търси">
 
 			<div class="sort-dropdown">
 				<button id="sortBtn">Сортиране ▾</button>
 				<ul id="sortMenu" class="hidden">
-					<li data-col="0" data-order="asc">По номер ↑</li>
-					<li data-col="0" data-order="desc">По номер ↓</li>
-					<li data-col="1" data-order="asc">По заглавие ↑</li>
-					<li data-col="1" data-order="desc">По заглавие ↓</li>
+					<li data-col="0" data-order="asc">По номер възходящо ↑</li>
+					<li data-col="0" data-order="desc">По номер низходящо ↓</li>
+					<li data-col="1" data-order="asc">По заглавие възходящо ↑</li>
+					<li data-col="1" data-order="desc">По заглавие низходящо ↓</li>
 				</ul>
 			</div>
+
+			<a id="downloadAll" href="https://drive.google.com/uc?export=download&amp;id=YOUR_ZIP_FILE_ID" download="all-songs.zip" class="download-btn">
+				Изтегли всички песни
+			</a>
 		</div>
 
 		<table id="documentsTable">
@@ -195,7 +199,7 @@
 						<a href="path/to/10.mp3" download>10.mp3</a>
 					</td>
 				</tr>
-				<tr>
+				<tr data-hidden-titles="peace be upon you;river of peace">
 					<td>11</td>
 					<td>Мир, като река</td>
 					<td>
