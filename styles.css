@@ -1,7 +1,7 @@
 .controls {
   display: flex;
   align-items: center;
-  width: 80%;
+  width: 100%;
   gap: 10px;
   margin-bottom: 20px;
 }
@@ -72,7 +72,7 @@
 }
 
 table {
-  width: 80%;
+  width: 100%;
   border-collapse: collapse;
 }
 th,
