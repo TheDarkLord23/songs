@@ -103,7 +103,7 @@ td {
 
 #documentsTable {
   table-layout: fixed;
-  width: 80%;
+  width: 100%;
 }
 
 #documentsTable th:nth-child(1),
