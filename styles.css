@@ -103,7 +103,25 @@ td {
 
 #documentsTable {
   table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 2px solid #7088a3;
+  border-radius: 8px;
   width: 100%;
+}
+
+#documentsTable thead.table_head th {
+  background-color: #7088a3;
+  color: white;
+}
+
+#documentsTable th,
+#documentsTable td {
+  border: none;
+}
+
+#documentsTable tbody tr:not(:last-child) td {
+  border-bottom: 1px solid #7088a3;
 }
 
 #documentsTable th:nth-child(1),
@@ -134,4 +152,12 @@ td {
 .file-icon {
   width: 24px;
   height: auto;
+}
+
+/* tablet only */
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+/* mobile only */
+@media (max-width: 767px) {
 }
