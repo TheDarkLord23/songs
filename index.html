@@ -3,339 +3,73 @@
 		<meta charset="UTF-8">
 
 		<link href="https://fonts.googleapis.com/css2?
-																																																																	family=Noto+Sans:wght@400;700&
-																																																																	family=Noto+Serif:wght@400;700&
-																																																																	display=swap" rel="stylesheet">
+																																																																										family=Noto+Sans:wght@400;700&
+																																																																										family=Noto+Serif:wght@400;700&
+																																																																										display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="styles.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	</head>
 	<body>
-		<div class="controls">
-			<input type="text" id="searchInput" class="search" placeholder="Търси">
+		<div class="container">
+			<div class="controls">
+				<input type="text" id="searchInput" class="search" placeholder="Търси">
 
-			<div class="sort-dropdown">
-				<button id="sortBtn">Сортиране ▾</button>
-				<ul id="sortMenu" class="hidden">
-					<li data-col="0" data-order="asc">По номер възходящо ↑</li>
-					<li data-col="0" data-order="desc">По номер низходящо ↓</li>
-					<li data-col="1" data-order="asc">По заглавие възходящо ↑</li>
-					<li data-col="1" data-order="desc">По заглавие низходящо ↓</li>
-				</ul>
+				<div class="sort-dropdown">
+					<button id="sortBtn">Сортиране ▾</button>
+					<ul id="sortMenu" class="hidden">
+						<li data-col="0" data-order="asc">По номер възходящо ↑</li>
+						<li data-col="0" data-order="desc">По номер низходящо ↓</li>
+						<li data-col="1" data-order="asc">По заглавие възходящо ↑</li>
+						<li data-col="1" data-order="desc">По заглавие низходящо ↓</li>
+					</ul>
+				</div>
+
+				<a id="downloadAll" href="https://cloud.adventist.bg/index.php/s/J7JtoE8DLnziyNp/download?path=%2F&openfile=360880" download="all-songs.zip" class="download-btn">
+					Изтегли всички песни
+				</a>
 			</div>
 
-			<a id="downloadAll" href="https://cloud.adventist.bg/index.php/s/J7JtoE8DLnziyNp/download?path=%2F&openfile=360880" download="all-songs.zip" class="download-btn">
-				Изтегли всички песни
-			</a>
+			<!-- HEADER -->
+			<div class="documents-header">
+				<div class="cell number">Номер</div>
+				<div class="cell title">Заглавие</div>
+				<div class="cell presentation">Презентация</div>
+				<div class="cell text">Текст</div>
+				<div class="cell notes">Ноти</div>
+				<div class="cell music">Музика</div>
+			</div>
+
+			<!-- ROW -->
+			<div class="documents-row">
+				<div class="cell number">1</div>
+				<div class="cell title">Народи, братски племена</div>
+				<div class="cell presentation">
+					<a href="https://cloud.adventist.bg/index.php/s/J7JtoE8DLnziyNp/download?path=%2F51-51. Аз ще възпея Теб, Исусе.pptx" download>
+						<img src="ppt.png" alt=".pptx" class="file-icon" title="51-presentation.pptx">
+					</a>
+				</div>
+				<div class="cell text">
+					<a href="path/to/1.txt" download>
+						<img src="pdf.png" alt=".txt" class="file-icon">
+					</a>
+				</div>
+				<div class="cell notes">
+					<a href="path/to/1.pdf" download>
+						<img src="notes.png" alt=".pdf" class="file-icon">
+					</a>
+				</div>
+				<div class="cell music">
+					<a href="path/to/1.mp3" download>
+						<img src="music.png" alt=".mp3" class="file-icon">
+					</a>
+				</div>
+			</div>
+
+
 		</div>
 
-		<table id="documentsTable">
-			<thead class="table_head">
-				<tr>
-					<th>Номер</th>
-					<th>Заглавие</th>
-					<th>Презентация</th>
-					<th>Текст</th>
-					<th>Ноти</th>
-					<th>Музика</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>Народи, братски племена</td>
-					<td>
-						<a href="https://cloud.adventist.bg/index.php/s/J7JtoE8DLnziyNp/download?path=%2F51-51. Аз ще възпея Теб, Исусе.pptx
-							
-							
-																																																								" download>
-							<img src="ppt.png" alt=".pptx" class="file-icon" title="51-presentation.pptx">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.txt" download>
-							<img src="pdf.png" alt=".txt" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.pdf" download>
-							<img src="notes.png" alt=".pdf" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.mp3" download>
-							<img src="music.png" alt=".mp3" class="file-icon">
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>Аз ще възпея Теб, Исусе</td>
-					<td>
-						<a href="path/to/1.pptx" download>
-							<img src="ppt.png" alt=".pptx" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.txt" download>
-							<img src="pdf.png" alt=".txt" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.pdf" download>
-							<img src="notes.png" alt=".pdf" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.mp3" download>
-							<img src="music.png" alt=".mp3" class="file-icon">
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>Вярвам в Теб, Боже силен</td>
-					<td>
-						<a href="path/to/1.pptx" download>
-							<img src="ppt.png" alt=".pptx" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.txt" download>
-							<img src="pdf.png" alt=".txt" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.pdf" download>
-							<img src="notes.png" alt=".pdf" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.mp3" download>
-							<img src="music.png" alt=".mp3" class="file-icon">
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>Благослови, душо моя, Господа</td>
-					<td>
-						<a href="path/to/1.pptx" download>
-							<img src="ppt.png" alt=".pptx" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.txt" download>
-							<img src="pdf.png" alt=".txt" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.pdf" download>
-							<img src="notes.png" alt=".pdf" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.mp3" download>
-							<img src="music.png" alt=".mp3" class="file-icon">
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>Ще възпея Господа с песен нова</td>
-					<td>
-						<a href="path/to/1.pptx" download>
-							<img src="ppt.png" alt=".pptx" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.txt" download>
-							<img src="pdf.png" alt=".txt" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.pdf" download>
-							<img src="notes.png" alt=".pdf" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.mp3" download>
-							<img src="music.png" alt=".mp3" class="file-icon">
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td>Исуса, Ти си моя светлина</td>
-					<td>
-						<a href="path/to/1.pptx" download>
-							<img src="ppt.png" alt=".pptx" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.txt" download>
-							<img src="pdf.png" alt=".txt" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.pdf" download>
-							<img src="notes.png" alt=".pdf" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.mp3" download>
-							<img src="music.png" alt=".mp3" class="file-icon">
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<td>7</td>
-					<td>Твоят път ме води, Господи</td>
-					<td>
-						<a href="path/to/1.pptx" download>
-							<img src="ppt.png" alt=".pptx" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.txt" download>
-							<img src="pdf.png" alt=".txt" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.pdf" download>
-							<img src="notes.png" alt=".pdf" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.mp3" download>
-							<img src="music.png" alt=".mp3" class="file-icon">
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<td>8</td>
-					<td>Благодарете Господу</td>
-					<td>
-						<a href="path/to/1.pptx" download>
-							<img src="ppt.png" alt=".pptx" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.txt" download>
-							<img src="pdf.png" alt=".txt" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.pdf" download>
-							<img src="notes.png" alt=".pdf" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.mp3" download>
-							<img src="music.png" alt=".mp3" class="file-icon">
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<td>9</td>
-					<td>Тебе, Христе, славим</td>
-					<td>
-						<a href="path/to/1.pptx" download>
-							<img src="ppt.png" alt=".pptx" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.txt" download>
-							<img src="pdf.png" alt=".txt" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.pdf" download>
-							<img src="notes.png" alt=".pdf" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.mp3" download>
-							<img src="music.png" alt=".mp3" class="file-icon">
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<td>10</td>
-					<td>Силен си, Господи</td>
-					<td>
-						<a href="path/to/1.pptx" download>
-							<img src="ppt.png" alt=".pptx" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.txt" download>
-							<img src="pdf.png" alt=".txt" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.pdf" download>
-							<img src="notes.png" alt=".pdf" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.mp3" download>
-							<img src="music.png" alt=".mp3" class="file-icon">
-						</a>
-					</td>
-				</tr>
-				<tr data-hidden-titles="peace be upon you;river of peace">
-					<td>11</td>
-					<td>Мир, като река</td>
-					<td>
-						<a href="path/to/1.pptx" download>
-							<img src="ppt.png" alt=".pptx" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.txt" download>
-							<img src="pdf.png" alt=".txt" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.pdf" download>
-							<img src="notes.png" alt=".pdf" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.mp3" download>
-							<img src="music.png" alt=".mp3" class="file-icon">
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<td>12</td>
-					<td>В моето сърце живееш Ти</td>
-					<td>
-						<a href="path/to/1.pptx" download>
-							<img src="ppt.png" alt=".pptx" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.txt" download>
-							<img src="pdf.png" alt=".txt" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.pdf" download>
-							<img src="notes.png" alt=".pdf" class="file-icon">
-						</a>
-					</td>
-					<td>
-						<a href="path/to/1.mp3" download>
-							<img src="music.png" alt=".mp3" class="file-icon">
-						</a>
-					</td>
-				</tr>
-
-			</tbody>
-		</table>
-
 		<script src="script.js"></script>
+
 	</body>
 </html>

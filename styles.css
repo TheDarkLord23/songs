@@ -5,17 +5,16 @@
   gap: 10px;
   margin-bottom: 20px;
 }
-
 .search {
   border-radius: 200px;
   border: 1px solid rgb(177, 177, 177);
+  height: 40px;
+  padding: 3px 15px;
 }
-
 .sort-dropdown {
   position: relative;
   display: inline-block;
 }
-
 .sort-dropdown button {
   padding: 8px 12px;
   cursor: pointer;
@@ -26,7 +25,6 @@
   font-size: 17px;
   background-color: white;
 }
-
 .sort-dropdown ul {
   list-style: none;
   margin: 0;
@@ -42,20 +40,16 @@
   font-family: "Noto Sans", sans-serif;
   font-size: 15px;
 }
-
 .sort-dropdown ul li {
   padding: 6px 10px;
   cursor: pointer;
 }
-
 .sort-dropdown ul li:hover {
   color: #2f557f;
 }
-
 .hidden {
   display: none;
 }
-
 .download-btn {
   margin-left: auto;
   padding: 8px 12px;
@@ -66,11 +60,11 @@
   font-family: "Noto Sans", sans-serif;
   font-size: 15px;
 }
-
 .download-btn:hover {
   background-color: #04132b;
 }
 
+/* 
 table {
   width: 100%;
   border-collapse: collapse;
@@ -92,15 +86,12 @@ input[type="text"] {
   padding: 8px;
   width: 200px;
 }
-
 th {
   font-family: "Noto Serif";
 }
-
 td {
   font-family: "Noto Sans", sans-serif;
 }
-
 #documentsTable {
   table-layout: fixed;
   border-collapse: separate;
@@ -109,44 +100,111 @@ td {
   border-radius: 8px;
   width: 100%;
 }
-
 #documentsTable thead.table_head th {
   background-color: #7088a3;
   color: white;
 }
-
 #documentsTable th,
 #documentsTable td {
   border: none;
 }
-
 #documentsTable tbody tr:not(:last-child) td {
   border-bottom: 1px solid #7088a3;
 }
-
 #documentsTable th:nth-child(1),
 #documentsTable td:nth-child(1) {
   width: 60px;
 }
-
 #documentsTable th:nth-child(3),
 #documentsTable td:nth-child(3) {
   width: 150px;
 }
-
 #documentsTable th:nth-child(4),
 #documentsTable td:nth-child(4) {
   width: 100px;
 }
-
 #documentsTable th:nth-child(5),
 #documentsTable td:nth-child(5) {
   width: 100px;
 }
-
 #documentsTable th:nth-child(6),
 #documentsTable td:nth-child(6) {
   width: 100px;
+}
+.file-icon {
+  width: 24px;
+  height: auto;
+}
+
+ */
+
+.documents-header,
+.documents-row {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* same grid for both */
+  display: grid;
+  grid-template-columns: 60px 1fr 150px 100px 100px 100px;
+}
+
+/* Header gets top/left/right border, rounded top only */
+.documents-header {
+  background: #7088a3;
+  color: white;
+  font-family: "Noto Serif";
+  font-weight: bold;
+  border: 2px solid #7088a3;
+  border-bottom: none; /* so the row's border touches the header */
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 0;
+}
+
+.documents-header .cell {
+  padding: 8px 10px;
+  text-align: left;
+  border-right: none;
+  font-family: "Noto Serif";
+}
+
+/* Row gets left/right/bottom border, rounded bottom only on last row */
+.documents-row {
+  align-items: center;
+  gap: 0;
+  font-family: "Noto Sans", sans-serif;
+  background: white;
+  border-left: 2px solid #7088a3;
+  border-right: 2px solid #7088a3;
+  border-bottom: 1px solid #7088a3;
+  border-radius: 0 0 0 0;
+}
+
+.documents-row:last-child {
+  border-radius: 0 0 8px 8px;
+  border-bottom: 2px solid #7088a3;
+}
+
+.documents-row .cell {
+  padding: 8px 10px;
+  border-right: none;
+  border-bottom: none;
+  background: none;
+  display: flex;
+  align-items: center;
+}
+
+.documents-row .cell.number {
+  font-family: "Noto Sans", sans-serif;
+}
+.documents-row .cell.title {
+  font-family: "Noto Sans", sans-serif;
+}
+.documents-row .cell.presentation,
+.documents-row .cell.text,
+.documents-row .cell.notes,
+.documents-row .cell.music {
+  justify-content: center;
 }
 
 .file-icon {
@@ -154,10 +212,56 @@ td {
   height: auto;
 }
 
-/* tablet only */
-@media (min-width: 768px) and (max-width: 1024px) {
-}
-
-/* mobile only */
 @media (max-width: 767px) {
+  .documents-header,
+  .documents-row {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
+
+  .documents-header .cell.number,
+  .documents-row .cell.number {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+  .documents-header .cell.title,
+  .documents-row .cell.title {
+    grid-column: 3 / 5;
+    grid-row: 1;
+  }
+
+  .documents-header .cell.presentation,
+  .documents-row .cell.presentation {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .documents-header .cell.text,
+  .documents-row .cell.text {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .documents-header .cell.notes,
+  .documents-row .cell.notes {
+    grid-column: 3;
+    grid-row: 2;
+  }
+  .documents-header .cell.music,
+  .documents-row .cell.music {
+    grid-column: 4;
+    grid-row: 2;
+  }
+
+  .documents-header .cell,
+  .documents-row .cell {
+    padding: 10px 5px;
+    font-size: 15px;
+  }
+
+  .documents-header {
+    border-radius: 8px 8px 0 0;
+  }
+  .documents-row {
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 12px;
+  }
 }
