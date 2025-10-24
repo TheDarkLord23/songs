@@ -128,6 +128,11 @@
   border-bottom: 2px solid #2f557f;
 }
 
+.documents-row.last-visible {
+  border-radius: 0 0 8px 8px;
+  border-bottom: 2px solid #2f557f;
+}
+
 .documents-row .cell {
   padding: 8px 10px;
   border-right: none;
@@ -135,6 +140,12 @@
   background: none;
   display: flex;
   align-items: center;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .documents-row .cell.number {
@@ -170,7 +181,7 @@
 }
 
 .documents-row:nth-child(even) {
-  background-color: #7891ad;
+  background-color: #a7bacf;
   color: white;
 
   .line {
