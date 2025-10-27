@@ -7,18 +7,33 @@ const sortMenu = document.getElementById("sortMenu");
 
 // 1) Search filter
 searchInput.addEventListener("input", function () {
-  const filter = this.value.toLowerCase();
+  const normalize = (str) =>
+    str
+      .toLowerCase()
+      .replace(/[^\p{L}\p{N}]+/gu, " ")
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+
+  const queryWords = normalize(this.value);
   rows().forEach((row) => {
-    const num = row.querySelector(".cell.number").textContent.toLowerCase();
-    const title = row.querySelector(".cell.title").textContent.toLowerCase();
-    // match number OR title OR any hidden aliases
-    const hidden = (row.dataset.hiddenTitles || "").toLowerCase();
-    const match =
-      num.includes(filter) || title.includes(filter) || hidden.includes(filter);
+    const num = row.querySelector(".cell.number").textContent;
+    const title = row.querySelector(".cell.title").textContent;
+    const hidden = row.dataset.hiddenTitles || "";
+    const text = [num, title, hidden].join(" ").toLowerCase();
+
+    const songWords = normalize(text);
+
+    const match = queryWords.every((w) =>
+      songWords.some((sw) => sw.startsWith(w))
+    );
+
     row.style.display = match ? "" : "none";
   });
 
   updateRoundedRow();
+  if (typeof updateRowBackgrounds === "function") updateRowBackgrounds();
+  if (typeof updateNewBadges === "function") updateNewBadges();
 });
 
 // 2) Dropdown toggle
@@ -38,10 +53,16 @@ sortMenu.querySelectorAll("li").forEach((item) => {
         aVal = parseInt(a.querySelector(".cell.number").textContent, 10);
         bVal = parseInt(b.querySelector(".cell.number").textContent, 10);
         return asc ? aVal - bVal : bVal - aVal;
-      } else {
+      } else if (colIndex === 1) {
         // title column
         aVal = a.querySelector(".cell.title").textContent.toLowerCase();
         bVal = b.querySelector(".cell.title").textContent.toLowerCase();
+        return asc ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+      } else if (colIndex === 2) {
+        // date column (YYYY-MM-DD)
+        aVal = a.dataset.date || "";
+        bVal = b.dataset.date || "";
+        // ISO strings compare lexicographically; newest first = desc
         return asc ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
       }
     });
@@ -79,6 +100,8 @@ fetch("songs.json")
     const html = songsToAppend.map(buildRowHTML).join("");
     container.insertAdjacentHTML("beforeend", html);
     updateRoundedRow();
+    if (typeof updateRowBackgrounds === "function") updateRowBackgrounds();
+    updateNewBadges();
   })
   .catch((err) => console.error("Error loading songs:", err));
 
@@ -93,8 +116,9 @@ function buildRowHTML(s) {
        </a>`;
 
   return `
-    <div class="documents-row"
-         data-hidden-titles="${s.alias || ""}">
+    <div class="documents-row" data-date="${
+      s.date || ""
+    }" data-hidden-titles="${s.alias || ""}">
       <div class="cell number">${s.number}</div>
       <div class="line"></div>
       <div class="cell title">${s.title}</div>
@@ -124,10 +148,38 @@ function buildRowHTML(s) {
     </div>
   `;
 }
-// Append after DOM is ready (no reordering of your code needed)
 document.addEventListener("DOMContentLoaded", () => {
   if (!songsToAppend.length) return;
   const html = songsToAppend.map(buildRowHTML).join("");
   container.insertAdjacentHTML("beforeend", html);
   updateRoundedRow();
 });
+
+// "new" icon on rows that have the newest date
+function updateNewBadges() {
+  const all = rows();
+  if (!all.length) return;
+
+  let maxDate = "";
+  all.forEach((r) => {
+    const d = r.dataset.date || "";
+    if (d > maxDate) maxDate = d;
+  });
+
+  all.forEach((r) => {
+    const isNewest = (r.dataset.date || "") === maxDate && maxDate !== "";
+    const titleCell = r.querySelector(".cell.title");
+    let badge = r.querySelector(".new-badge");
+
+    if (isNewest) {
+      if (!badge) {
+        titleCell.insertAdjacentHTML(
+          "afterbegin",
+          '<img src="new.png" alt="Нова песен" class="new-badge" style="margin-right:16px; width:40px">'
+        );
+      }
+    } else {
+      if (badge) badge.remove();
+    }
+  });
+}
