@@ -160,6 +160,11 @@ document.addEventListener("DOMContentLoaded", () => {
   updateRoundedRow();
 });
 
+window.addEventListener("load", function () {
+  const height = document.documentElement.scrollHeight;
+  window.parent.postMessage(height, "*");
+});
+
 // "new" icon on rows that have the newest date
 /*function updateNewBadges() {
   const all = rows();
