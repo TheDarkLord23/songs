@@ -153,17 +153,6 @@ function buildRowHTML(s) {
     </div>
   `;
 }
-document.addEventListener("DOMContentLoaded", () => {
-  if (!songsToAppend.length) return;
-  const html = songsToAppend.map(buildRowHTML).join("");
-  container.insertAdjacentHTML("beforeend", html);
-  updateRoundedRow();
-});
-
-window.addEventListener("load", function () {
-  const height = document.documentElement.scrollHeight;
-  window.parent.postMessage(height, "*");
-});
 
 // "new" icon on rows that have the newest date
 /*function updateNewBadges() {
