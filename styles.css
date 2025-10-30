@@ -123,11 +123,6 @@
   border-radius: 0 0 0 0;
 }
 
-.documents-row:last-child {
-  border-radius: 0 0 8px 8px;
-  border-bottom: 2px solid #2f557f;
-}
-
 .documents-row.last-visible {
   border-radius: 0 0 8px 8px;
   border-bottom: 2px solid #2f557f;

@@ -70,6 +70,11 @@ sortMenu.querySelectorAll("li").forEach((item) => {
     // re-append in new order
     sorted.forEach((r) => container.appendChild(r));
     sortMenu.classList.add("hidden");
+
+    // recompute UI states
+    updateRoundedRow();
+    if (typeof updateRowBackgrounds === "function") updateRowBackgrounds();
+    if (typeof updateNewBadges === "function") updateNewBadges();
   });
 });
 
@@ -156,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // "new" icon on rows that have the newest date
-function updateNewBadges() {
+/*function updateNewBadges() {
   const all = rows();
   if (!all.length) return;
 
@@ -182,4 +187,4 @@ function updateNewBadges() {
       if (badge) badge.remove();
     }
   });
-}
+}*/
