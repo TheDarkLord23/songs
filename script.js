@@ -154,6 +154,16 @@ function buildRowHTML(s) {
   `;
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const dl = document.getElementById("downloadAll");
+  if (dl) {
+    dl.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.open(this.href, "_blank", "noopener,noreferrer");
+    });
+  }
+});
+
 // "new" icon on rows that have the newest date
 /*function updateNewBadges() {
   const all = rows();
