@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (dl) {
     dl.addEventListener("click", function (e) {
       e.preventDefault();
-      window.open(this.href, "_blank", "noopener,noreferrer");
+      window.open(this.href, "noopener,noreferrer");
     });
   }
 });
