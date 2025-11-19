@@ -72,6 +72,12 @@
   background-color: #04132b;
 }
 
+.additional {
+  opacity: 50%;
+  margin-top: -10px;
+  margin-left: 5px;
+}
+
 .documents-header,
 .documents-row {
   width: 100%;
@@ -79,7 +85,19 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 59px 2px 1fr 2px 150px 2px 100px 2px 100px 2px 100px;
+  grid-template-columns:
+    59px
+    2px
+    0.5fr
+    1fr
+    2px
+    150px
+    2px
+    100px
+    2px
+    100px
+    2px
+    100px;
 }
 
 .presentation,
@@ -91,6 +109,11 @@
 
 .title {
   padding-left: 30px !important;
+}
+
+.original-title {
+  font-style: italic;
+  opacity: 50%;
 }
 
 /* Header gets top/left/right border, rounded top only */
@@ -163,28 +186,28 @@
   opacity: 50%;
 }
 
-.documents-row:nth-child(odd) {
+.documents-row.row-odd {
   background-color: white;
   color: black;
-
-  .line {
-    width: 2px;
-    height: 50%;
-    background-color: #7891ad;
-    opacity: 50%;
-  }
 }
 
-.documents-row:nth-child(even) {
+.documents-row.row-odd .line {
+  width: 2px;
+  height: 50%;
+  background-color: #7891ad;
+  opacity: 50%;
+}
+
+.documents-row.row-even {
   background-color: #a7bacf;
   color: white;
+}
 
-  .line {
-    width: 2px;
-    height: 50%;
-    background-color: #ffffff;
-    opacity: 50%;
-  }
+.documents-row.row-even .line {
+  width: 2px;
+  height: 50%;
+  background-color: #ffffff;
+  opacity: 50%;
 }
 
 .file-icon {

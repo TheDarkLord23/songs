@@ -10,17 +10,21 @@ searchInput.addEventListener("input", function () {
   const normalize = (str) =>
     str
       .toLowerCase()
-      .replace(/[^\p{L}\p{N}]+/gu, " ")
+      .replace(/[^\p{L}\p{N}]+/gu, " ") // keep letters + numbers, normalize separators
       .trim()
       .split(/\s+/)
       .filter(Boolean);
 
   const queryWords = normalize(this.value);
+
   rows().forEach((row) => {
     const num = row.querySelector(".cell.number").textContent;
     const title = row.querySelector(".cell.title").textContent;
-    const hidden = row.dataset.hiddenTitles || "";
-    const text = [num, title, hidden].join(" ").toLowerCase();
+    const original =
+      row.querySelector(".cell.original-title")?.textContent || "";
+    const hidden = row.dataset.hiddenTitles || ""; // alias only
+
+    const text = [num, title, original, hidden].join(" ").toLowerCase();
 
     const songWords = normalize(text);
 
@@ -98,6 +102,28 @@ function updateRoundedRow() {
   if (lastVisible) lastVisible.classList.add("last-visible");
 }
 
+function updateRowBackgrounds() {
+  const allRows = rows();
+
+  // Remove any old classes
+  allRows.forEach((row) => {
+    row.classList.remove("row-odd", "row-even");
+  });
+
+  // Only consider visible rows for striping
+  const visibleRows = allRows.filter(
+    (r) => window.getComputedStyle(r).display !== "none"
+  );
+
+  visibleRows.forEach((row, index) => {
+    if (index % 2 === 0) {
+      row.classList.add("row-odd");
+    } else {
+      row.classList.add("row-even");
+    }
+  });
+}
+
 fetch("songs.json")
   .then((res) => res.json())
   .then((songsData) => {
@@ -120,6 +146,8 @@ function buildRowHTML(s) {
          <img src="music.png" alt=".mp3" class="file-icon" title="Очаквайте скоро">
        </a>`;
 
+  const hiddenTitles = [s.alias, s.originalTitle].filter(Boolean).join(" ");
+
   return `
     <div class="documents-row" data-date="${
       s.date || ""
@@ -127,6 +155,7 @@ function buildRowHTML(s) {
       <div class="cell number">${s.number}</div>
       <div class="line"></div>
       <div class="cell title">${s.title}</div>
+      <div class="cell original-title">${s.originalTitle || ""}</div>
       <div class="line"></div>
       <div class="line-mobile"></div>
       <div class="cell presentation">
