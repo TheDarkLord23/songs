@@ -155,7 +155,7 @@ function buildRowHTML(s) {
       <div class="cell number">${s.number}</div>
       <div class="line"></div>
       <div class="cell title">${s.title}</div>
-      <div class="cell original-title">${s.originalTitle || ""}</div>
+      <div class="cell original-title"></div>
       <div class="line"></div>
       <div class="line-mobile"></div>
       <div class="cell presentation">
