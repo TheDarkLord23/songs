@@ -88,8 +88,8 @@
   grid-template-columns:
     59px
     2px
-    0.5fr
     1fr
+    0.1fr
     2px
     150px
     2px
@@ -109,11 +109,6 @@
 
 .title {
   padding-left: 30px !important;
-}
-
-.original-title {
-  font-style: italic;
-  opacity: 50%;
 }
 
 /* Header gets top/left/right border, rounded top only */

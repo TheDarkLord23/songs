@@ -20,10 +20,8 @@ searchInput.addEventListener("input", function () {
   rows().forEach((row) => {
     const num = row.querySelector(".cell.number").textContent;
     const title = row.querySelector(".cell.title").textContent;
-    const original =
-      row.querySelector(".cell.original-title")?.textContent || "";
-    const hidden = row.dataset.hiddenTitles || ""; // alias only
-
+    const hidden = row.dataset.hiddenTitles || "";
+    const original = row.dataset.originalTitle || "";
     const text = [num, title, original, hidden].join(" ").toLowerCase();
 
     const songWords = normalize(text);
@@ -149,33 +147,41 @@ function buildRowHTML(s) {
   const hiddenTitles = [s.alias, s.originalTitle].filter(Boolean).join(" ");
 
   return `
-    <div class="documents-row" data-date="${
-      s.date || ""
-    }" data-hidden-titles="${s.alias || ""}">
+    <div class="documents-row"
+         data-date="${s.date || ""}"
+         data-hidden-titles="${hiddenTitles}"
+         data-original-title="${s.originalTitle || ""}">
+         
       <div class="cell number">${s.number}</div>
       <div class="line"></div>
+
       <div class="cell title">${s.title}</div>
-      <div class="cell original-title"></div>
+      <div class="cell original-title"></div> <!-- stays empty / hidden -->
       <div class="line"></div>
+
       <div class="line-mobile"></div>
+
       <div class="cell presentation">
         <a href="${s.ppt || "#"}" download>
           <img src="ppt.png" alt=".pptx" class="file-icon">
         </a>
       </div>
       <div class="line"></div>
+
       <div class="cell text">
         <a href="${s.text || "#"}" download>
           <img src="pdf.png" alt=".txt" class="file-icon">
         </a>
       </div>
       <div class="line"></div>
+
       <div class="cell notes">
         <a href="${s.notes || "#"}" download>
           <img src="notes.png" alt=".pdf" class="file-icon">
         </a>
       </div>
       <div class="line"></div>
+
       <div class="cell music">
         ${musicAnchor}
       </div>
