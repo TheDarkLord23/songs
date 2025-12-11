@@ -9,47 +9,61 @@
 
 	</head>
 	<body>
-		<div class="container">
-			<div class="controls">
-				<input type="text" id="searchInput" class="search" placeholder="Търси*">
+		<div
+			class="page-layout">
 
-				<div class="controls-row">
-					<div class="sort-dropdown">
-						<button id="sortBtn">Сортиране ▾</button>
-						<ul id="sortMenu" class="hidden">
-							<li data-col="0" data-order="asc">По номер възходящо ↑</li>
-							<li data-col="0" data-order="desc">По номер низходящо ↓</li>
-							<li data-col="1" data-order="asc">По азбучен ред</li>
-							<li data-col="2" data-order="desc">По дата (първо нови)</li>
-						</ul>
+			<!-- LEFT SIDEBAR -->
+			<aside class="category-sidebar" id="categorySidebar">
+				<div class="category-titleBtn">
+					<h2>Теми</h2>
+					<button id="clearCategories" class="clear-categories disabled">Изчисти ✕</button>
+				</div>
+			</aside>
+
+			<!-- MAIN CONTENT -->
+			<main class="main-content">
+				<div class="container">
+					<div class="controls">
+						<input type="text" id="searchInput" class="search" placeholder="Търси*">
+
+						<div class="controls-row">
+							<div class="sort-dropdown">
+								<button id="sortBtn">Сортиране ▾</button>
+								<ul id="sortMenu" class="hidden">
+									<li data-col="0" data-order="asc">По номер възходящо ↑</li>
+									<li data-col="0" data-order="desc">По номер низходящо ↓</li>
+									<li data-col="1" data-order="asc">По азбучен ред</li>
+									<li data-col="2" data-order="desc">По дата (първо нови)</li>
+								</ul>
+							</div>
+
+							<a id="downloadAll" href="https://cloud.adventist.bg/index.php/s/DxPTXjNQDDFpoax/download" download class="download-btn">
+								Изтегли всички песни
+							</a>
+						</div>
+					</div>
+					<p class="additional">*по номер, старо, ново или оригинално заглавие</p>
+
+					<!-- HEADER -->
+					<div class="documents-header">
+						<div class="cell number">№</div>
+						<div class="line"></div>
+						<div class="cell title">Заглавие</div>
+						<div class="cell title"></div>
+						<div class="line"></div>
+						<div class="line-mobile"></div>
+						<div class="cell presentation">Презентация</div>
+						<div class="line"></div>
+						<div class="cell text">Текст</div>
+						<div class="line"></div>
+						<div class="cell notes">Ноти</div>
+						<div class="line"></div>
+						<div class="cell music">Музика</div>
 					</div>
 
-					<a id="downloadAll" href="https://cloud.adventist.bg/index.php/s/DxPTXjNQDDFpoax/download" download class="download-btn">
-						Изтегли всички песни
-					</a>
+					<!-- ROWS  -->
 				</div>
-			</div>
-			<p class="additional">*по номер, старо, ново или оригинално заглавие</p>
-
-			<!-- HEADER -->
-			<div class="documents-header">
-				<div class="cell number">№</div>
-				<div class="line"></div>
-				<div class="cell title">Заглавие</div>
-				<div class="cell title"></div>
-				<div class="line"></div>
-				<div class="line-mobile"></div>
-				<div class="cell presentation">Презентация</div>
-				<div class="line"></div>
-				<div class="cell text">Текст</div>
-				<div class="line"></div>
-				<div class="cell notes">Ноти</div>
-				<div class="line"></div>
-				<div class="cell music">Музика</div>
-			</div>
-
-			<!-- ROWS -->
-
+			</main>
 		</div>
 
 		<script src="script.js"></script>

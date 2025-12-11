@@ -5,37 +5,24 @@ const rows = () => Array.from(container.querySelectorAll(".documents-row"));
 const sortBtn = document.getElementById("sortBtn");
 const sortMenu = document.getElementById("sortMenu");
 
+// Filter state
+let activeQueryWords = [];
+let activeMainCategory = null;
+let activeSubCategory = null;
+
+// Shared normalize helper
+const normalize = (str) =>
+  (str || "")
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+
 // 1) Search filter
 searchInput.addEventListener("input", function () {
-  const normalize = (str) =>
-    str
-      .toLowerCase()
-      .replace(/[^\p{L}\p{N}]+/gu, " ") // keep letters + numbers, normalize separators
-      .trim()
-      .split(/\s+/)
-      .filter(Boolean);
-
-  const queryWords = normalize(this.value);
-
-  rows().forEach((row) => {
-    const num = row.querySelector(".cell.number").textContent;
-    const title = row.querySelector(".cell.title").textContent;
-    const hidden = row.dataset.hiddenTitles || "";
-    const original = row.dataset.originalTitle || "";
-    const text = [num, title, original, hidden].join(" ").toLowerCase();
-
-    const songWords = normalize(text);
-
-    const match = queryWords.every((w) =>
-      songWords.some((sw) => sw.startsWith(w))
-    );
-
-    row.style.display = match ? "" : "none";
-  });
-
-  updateRoundedRow();
-  if (typeof updateRowBackgrounds === "function") updateRowBackgrounds();
-  if (typeof updateNewBadges === "function") updateNewBadges();
+  activeQueryWords = normalize(this.value);
+  applyFilters();
 });
 
 // 2) Dropdown toggle
@@ -122,15 +109,193 @@ function updateRowBackgrounds() {
   });
 }
 
+// Filter
+function applyFilters() {
+  const allRows = rows();
+
+  allRows.forEach((row) => {
+    const num = row.querySelector(".cell.number").textContent;
+    const title = row.querySelector(".cell.title").textContent;
+    const hidden = row.dataset.hiddenTitles || "";
+    const original = row.dataset.originalTitle || "";
+    const text = [num, title, original, hidden].join(" ").toLowerCase();
+    const songWords = normalize(text);
+
+    // text match
+    const matchText = activeQueryWords.every((w) =>
+      songWords.some((sw) => sw.startsWith(w))
+    );
+
+    // category match
+    const rowMain = row.dataset.main || "";
+    const rowSub = row.dataset.sub || "";
+
+    const matchMain = !activeMainCategory || rowMain === activeMainCategory;
+    const matchSub = !activeSubCategory || rowSub === activeSubCategory;
+
+    const visible = matchText && matchMain && matchSub;
+    row.style.display = visible ? "" : "none";
+  });
+
+  updateRoundedRow();
+  if (typeof updateRowBackgrounds === "function") updateRowBackgrounds();
+  if (typeof updateNewBadges === "function") updateNewBadges();
+}
+
+function buildCategorySidebar(songsData) {
+  const sidebar = document.getElementById("categorySidebar");
+  if (!sidebar) return;
+
+  const categoryMap = {};
+  songsData.forEach((s) => {
+    if (!s.categoryMain) return;
+    if (!categoryMap[s.categoryMain]) {
+      categoryMap[s.categoryMain] = new Set();
+    }
+    if (s.categorySub) {
+      categoryMap[s.categoryMain].add(s.categorySub);
+    }
+  });
+
+  const mainList = document.createElement("ul");
+  mainList.className = "category-list";
+
+  Object.entries(categoryMap).forEach(([mainName, subSet]) => {
+    // wrapper li for this group
+    const wrapper = document.createElement("li");
+    wrapper.className = "category-group";
+
+    // the pill / label
+    const mainEl = document.createElement("div");
+    mainEl.className = "category-main";
+    mainEl.textContent = mainName;
+    mainEl.dataset.main = mainName;
+
+    // subcategories list (sibling, not child of the pill)
+    const subList = document.createElement("ul");
+    subList.className = "subcategory-list hidden";
+
+    subSet.forEach((subName) => {
+      const subLi = document.createElement("li");
+      subLi.className = "category-sub";
+      subLi.textContent = subName;
+      subLi.dataset.main = mainName;
+      subLi.dataset.sub = subName;
+      subList.appendChild(subLi);
+    });
+
+    // click on main category
+    mainEl.addEventListener("click", () => {
+      const alreadyActive =
+        activeMainCategory === mainName && !activeSubCategory;
+
+      document
+        .querySelectorAll(".category-main")
+        .forEach((el) => el.classList.remove("active"));
+      document
+        .querySelectorAll(".subcategory-list")
+        .forEach((ul) => ul.classList.add("hidden"));
+      document
+        .querySelectorAll(".category-sub")
+        .forEach((el) => el.classList.remove("active"));
+
+      if (alreadyActive) {
+        activeMainCategory = null;
+        activeSubCategory = null;
+      } else {
+        activeMainCategory = mainName;
+        activeSubCategory = null;
+        mainEl.classList.add("active");
+        subList.classList.remove("hidden");
+      }
+
+      applyFilters();
+      updateClearButton();
+    });
+
+    // click on subcategory
+    subList.addEventListener("click", (evt) => {
+      const target = evt.target.closest(".category-sub");
+      if (!target) return;
+      evt.stopPropagation();
+
+      const subName = target.dataset.sub;
+
+      activeMainCategory = mainName;
+
+      const isActive = activeSubCategory === subName;
+      subList
+        .querySelectorAll(".category-sub")
+        .forEach((el) => el.classList.remove("active"));
+
+      if (isActive) {
+        activeSubCategory = null;
+      } else {
+        activeSubCategory = subName;
+        target.classList.add("active");
+      }
+
+      document
+        .querySelectorAll(".category-main")
+        .forEach((el) => el.classList.remove("active"));
+      mainEl.classList.add("active");
+      subList.classList.remove("hidden");
+
+      applyFilters();
+      updateClearButton();
+    });
+
+    wrapper.appendChild(mainEl);
+    wrapper.appendChild(subList);
+    mainList.appendChild(wrapper);
+  });
+
+  sidebar.appendChild(mainList);
+}
+
+const clearBtn = document.getElementById("clearCategories");
+
+function updateClearButton() {
+  if (activeMainCategory || activeSubCategory) {
+    clearBtn.classList.remove("disabled");
+  } else {
+    clearBtn.classList.add("disabled");
+  }
+}
+
+clearBtn.addEventListener("click", () => {
+  // reset filter state
+  activeMainCategory = null;
+  activeSubCategory = null;
+
+  // remove all highlights
+  document
+    .querySelectorAll(".category-main")
+    .forEach((el) => el.classList.remove("active"));
+  document
+    .querySelectorAll(".category-sub")
+    .forEach((el) => el.classList.remove("active"));
+  document
+    .querySelectorAll(".subcategory-list")
+    .forEach((ul) => ul.classList.add("hidden"));
+
+  applyFilters();
+  updateClearButton();
+});
+
 fetch("songs.json")
   .then((res) => res.json())
   .then((songsData) => {
-    const songsToAppend = songsData;
-    const html = songsToAppend.map(buildRowHTML).join("");
+    const html = songsData.map(buildRowHTML).join("");
     container.insertAdjacentHTML("beforeend", html);
+
+    buildCategorySidebar(songsData);
+
+    updateClearButton(); // <-- IMPORTANT
+
     updateRoundedRow();
     if (typeof updateRowBackgrounds === "function") updateRowBackgrounds();
-    updateNewBadges();
+    if (typeof updateNewBadges === "function") updateNewBadges();
   })
   .catch((err) => console.error("Error loading songs:", err));
 
@@ -150,13 +315,15 @@ function buildRowHTML(s) {
     <div class="documents-row"
          data-date="${s.date || ""}"
          data-hidden-titles="${hiddenTitles}"
-         data-original-title="${s.originalTitle || ""}">
+         data-original-title="${s.originalTitle || ""}"
+         data-main="${s.categoryMain || ""}"
+         data-sub="${s.categorySub || ""}">
          
       <div class="cell number">${s.number}</div>
       <div class="line"></div>
 
       <div class="cell title">${s.title}</div>
-      <div class="cell original-title"></div> <!-- stays empty / hidden -->
+      <div class="cell original-title"></div>
       <div class="line"></div>
 
       <div class="line-mobile"></div>

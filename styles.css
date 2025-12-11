@@ -210,6 +210,127 @@
   height: auto;
 }
 
+/* SIDEBAR */
+.page-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.category-sidebar {
+  width: 230px;
+  flex-shrink: 0;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #d0d8e4;
+  background: #f5f7fb;
+  padding: 10px 8px;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.main-content {
+  flex: 1;
+}
+
+/* title + button*/
+
+.category-titleBtn {
+  display: flex;
+  justify-content: space-between;
+
+  h2 {
+    padding-left: 8px;
+    font-family: "Noto Serif";
+  }
+}
+
+.clear-categories {
+  padding: 6px 10px;
+  border: none;
+  background-color: transparent;
+  color: black;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s, background 0.2s;
+  opacity: 1;
+}
+
+.clear-categories.disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* category list */
+.category-list,
+.subcategory-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.category-group {
+  margin-bottom: 6px;
+}
+
+.category-group:last-child {
+  margin-bottom: 0;
+}
+
+.category-main {
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 999px;
+  margin-bottom: 4px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.category-main:hover {
+  background: #e1e7f0;
+}
+
+.category-main.active {
+  background: #2f557f;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.subcategory-list {
+  margin: 4px 0 8px 0;
+  padding-left: 12px;
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.subcategory-list.hidden {
+  display: none;
+}
+
+.category-sub {
+  cursor: pointer;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin: 2px 0;
+  font-size: 13px;
+  color: #333;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.category-sub:hover {
+  background: #dde4ef;
+}
+
+.category-sub.active {
+  background: #a1b9d4;
+  color: #ffffff;
+}
+
+/* ------------------- RESPONSIVE ------------------- */
+
 @media (width > 800px) {
   .line-mobile {
     display: none;
