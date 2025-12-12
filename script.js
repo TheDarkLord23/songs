@@ -10,6 +10,51 @@ let activeQueryWords = [];
 let activeMainCategory = null;
 let activeSubCategory = null;
 
+// desired order of MAIN categories:
+const mainOrder = [
+  "Поклонение",
+  "Бог Отец",
+  "Исус Христос",
+  "Светият Дух",
+  "Божието слово",
+  "Молитва и посвещение",
+  "Християнски живот",
+  "Мисия и служене",
+  "Специални поводи",
+];
+
+// desired order of SUB categories per main:
+const subOrder = {
+  Поклонение: [
+    "Хваление и благодарност",
+    "Откриване на богослуженията",
+    "Закриване на богослуженията",
+    "Господният ден и съботно училище",
+  ],
+  "Бог Отец": [
+    "Божията любов",
+    "Божието водителство и закрила",
+    "Божията благодат и милост",
+    "Божието величие и творческа сила",
+  ],
+  "Исус Христос": [
+    "Рождение на Христос",
+    "Живот и служене",
+    "Страдания, смърт и възкресение",
+    "Второ Пришествие и вечен живот",
+    "Възхвала на Христос",
+  ],
+  "Християнски живот": [
+    "Спасение – покана и опитност",
+    "Покаяние и обръщане",
+    "Вяра и упование в Бога",
+    "Радост и мир в Бога",
+    "Християнски характер",
+    "Братство и единство",
+  ],
+  "Специални поводи": ["Кръщение", "Господна вечеря"],
+};
+
 // Shared normalize helper
 const normalize = (str) =>
   (str || "")
@@ -160,22 +205,48 @@ function buildCategorySidebar(songsData) {
   const mainList = document.createElement("ul");
   mainList.className = "category-list";
 
-  Object.entries(categoryMap).forEach(([mainName, subSet]) => {
-    // wrapper li for this group
+  // sort MAIN categories
+  const orderedMains = Object.entries(categoryMap).sort(([a], [b]) => {
+    const ia = mainOrder.indexOf(a);
+    const ib = mainOrder.indexOf(b);
+
+    // if both found in mainOrder – use that order
+    if (ia !== -1 && ib !== -1) return ia - ib;
+    // if only one is found – it comes first
+    if (ia !== -1) return -1;
+    if (ib !== -1) return 1;
+    // otherwise alphabetical fallback
+    return a.localeCompare(b, "bg");
+  });
+
+  orderedMains.forEach(([mainName, subSet]) => {
     const wrapper = document.createElement("li");
     wrapper.className = "category-group";
 
-    // the pill / label
     const mainEl = document.createElement("div");
     mainEl.className = "category-main";
     mainEl.textContent = mainName;
     mainEl.dataset.main = mainName;
 
-    // subcategories list (sibling, not child of the pill)
     const subList = document.createElement("ul");
     subList.className = "subcategory-list hidden";
 
-    subSet.forEach((subName) => {
+    // sort SUB categories for this main
+    const subs = Array.from(subSet);
+    const thisOrder = subOrder[mainName];
+
+    subs.sort((a, b) => {
+      if (thisOrder) {
+        const ia = thisOrder.indexOf(a);
+        const ib = thisOrder.indexOf(b);
+        if (ia !== -1 && ib !== -1) return ia - ib;
+        if (ia !== -1) return -1;
+        if (ib !== -1) return 1;
+      }
+      return a.localeCompare(b, "bg");
+    });
+
+    subs.forEach((subName) => {
       const subLi = document.createElement("li");
       subLi.className = "category-sub";
       subLi.textContent = subName;
@@ -184,7 +255,8 @@ function buildCategorySidebar(songsData) {
       subList.appendChild(subLi);
     });
 
-    // click on main category
+    // --- click handlers stay the same as before ---
+
     mainEl.addEventListener("click", () => {
       const alreadyActive =
         activeMainCategory === mainName && !activeSubCategory;
@@ -213,7 +285,6 @@ function buildCategorySidebar(songsData) {
       updateClearButton();
     });
 
-    // click on subcategory
     subList.addEventListener("click", (evt) => {
       const target = evt.target.closest(".category-sub");
       if (!target) return;
