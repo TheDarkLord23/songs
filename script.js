@@ -64,6 +64,23 @@ const normalize = (str) =>
     .split(/\s+/)
     .filter(Boolean);
 
+function sortRowsByNewestFirstOnLoad() {
+  const sorted = rows().sort((a, b) => {
+    const aDate = (a.dataset.date || "").trim();
+    const bDate = (b.dataset.date || "").trim();
+
+    // newest first
+    if (aDate !== bDate) return bDate.localeCompare(aDate);
+
+    // tie-breaker: smaller number first (optional, nice)
+    const aNum = parseInt(a.querySelector(".cell.number").textContent, 10);
+    const bNum = parseInt(b.querySelector(".cell.number").textContent, 10);
+    return aNum - bNum;
+  });
+
+  sorted.forEach((r) => container.appendChild(r));
+}
+
 // 1) Search filter
 searchInput.addEventListener("input", function () {
   activeQueryWords = normalize(this.value);
@@ -360,13 +377,20 @@ fetch("songs.json")
     const html = songsData.map(buildRowHTML).join("");
     container.insertAdjacentHTML("beforeend", html);
 
+    // ✅ build categories on the left
     buildCategorySidebar(songsData);
 
-    updateClearButton(); // <-- IMPORTANT
+    // ✅ initialize clear button state (starts disabled)
+    if (typeof updateClearButton === "function") updateClearButton();
+
+    // ✅ move newest songs to top (table only)
+    sortRowsByNewestFirstOnLoad();
+
+    // ✅ show NEW badges
+    if (typeof updateNewBadges === "function") updateNewBadges();
 
     updateRoundedRow();
     if (typeof updateRowBackgrounds === "function") updateRowBackgrounds();
-    if (typeof updateNewBadges === "function") updateNewBadges();
   })
   .catch((err) => console.error("Error loading songs:", err));
 
@@ -438,7 +462,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // "new" icon on rows that have the newest date
-/*function updateNewBadges() {
+function updateNewBadges() {
   const all = rows();
   if (!all.length) return;
 
@@ -464,4 +488,4 @@ document.addEventListener("DOMContentLoaded", () => {
       if (badge) badge.remove();
     }
   });
-}*/
+}
