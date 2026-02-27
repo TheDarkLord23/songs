@@ -648,6 +648,19 @@
     "categorySub": "Покаяние и обръщане"
   },
   {
+    "number": 99,
+    "title": "Ела, Исусе мой",
+    "alias": "",
+    "ppt": "https://cloud.adventist.bg/index.php/s/jSiaHkzimxEQE6P/download",
+    "text": "https://cloud.adventist.bg/index.php/s/CJ6cc5JScAJgE3b/download",
+    "notes": "https://cloud.adventist.bg/index.php/s/aB4Dc9B7DgSNB7e/download",
+    "music": "",
+    "date": "2026-02-26",
+    "originalTitle": "Come, My Redeemer, Come",
+    "categoryMain": "Християнски живот",
+    "categorySub": "Покаяние и обръщане"
+  },
+  {
     "number": 101,
     "title": "Боже, напълно съм убеден",
     "alias": "Съвсем съм убеден, Боже мой",
@@ -687,10 +700,36 @@
     "categorySub": ""
   },
   {
+    "number": 104,
+    "title": "Сърцето си на Теб сега ще дам",
+    "alias": "",
+    "ppt": "https://cloud.adventist.bg/index.php/s/xSeE9NNfiMFiAwX/download",
+    "text": "https://cloud.adventist.bg/index.php/s/KKp8romXH9ARdzr/download",
+    "notes": "https://cloud.adventist.bg/index.php/s/DgmoddgFWSD8Kyw/download",
+    "music": "",
+    "date": "2026-02-26",
+    "originalTitle": "Hier ist mein Herz",
+    "categoryMain": "Християнски живот",
+    "categorySub": "Покаяние и обръщане"
+  },
+  {
+    "number": 105,
+    "title": "Не желая богатство",
+    "alias": "",
+    "ppt": "https://cloud.adventist.bg/index.php/s/46yAmCaWaMfBGxW/download",
+    "text": "https://cloud.adventist.bg/index.php/s/MfTbJFGLGnSkcQY/download",
+    "notes": "https://cloud.adventist.bg/index.php/s/exct3YjTLqYszEw/download",
+    "music": "",
+    "date": "2026-02-26",
+    "originalTitle": "Lord, I Care Not for Riche",
+    "categoryMain": "Християнски живот",
+    "categorySub": "Покаяние и обръщане"
+  },
+  {
     "number": 106,
     "title": "Твой да съм желая",
     "alias": "Твой да съм и Тебе да отдам",
-    "ppt": "https://cloud.adventist.bg/index.php/s/oseZk8tH2y3WtBj/download",
+    "ppt": "https://cloud.adventist.bg/index.php/s/3Dp4bXdqbyR83L6/download",
     "text": "https://cloud.adventist.bg/index.php/s/X5KBZ9d6FWxEKyk/download",
     "notes": "https://cloud.adventist.bg/index.php/s/WLLokmbiQqXJFLW/download",
     "music": "",
@@ -711,6 +750,45 @@
     "originalTitle": "What Shall I Do For Christ, My Savior",
     "categoryMain": "Християнски живот",
     "categorySub": "Покаяние и обръщане"
+  },
+  {
+    "number": 116,
+    "title": "Плуваме всички в огромно море",
+    "alias": "Плуваме ний през широко море",
+    "ppt": "https://cloud.adventist.bg/index.php/s/dbaL8mekDLkbkwL/download",
+    "text": "https://cloud.adventist.bg/index.php/s/nzgRqoorXdSZrqC/download",
+    "notes": "https://cloud.adventist.bg/index.php/s/DTtGLJp7zdn2tTW/download",
+    "music": "",
+    "date": "2026-02-26",
+    "originalTitle": "Out on an Ocean All Boundless We Ride",
+    "categoryMain": "Копнеж за небесната родина",
+    "categorySub": ""
+  },
+  {
+    "number": 117,
+    "title": "Желая винаги да бъда със Христос",
+    "alias": "Всегда при Господа",
+    "ppt": "https://cloud.adventist.bg/index.php/s/M2dccNJwNa3W2Ko/download",
+    "text": "https://cloud.adventist.bg/index.php/s/jTqRcDytBfs7Rox/download",
+    "notes": "https://cloud.adventist.bg/index.php/s/RcATKXiKNpaJw2B/download",
+    "music": "",
+    "date": "2026-02-26",
+    "originalTitle": "Forever with the Lord",
+    "categoryMain": "Копнеж за небесната родина",
+    "categorySub": ""
+  },
+  {
+    "number": 118,
+    "title": "Копнея да се върна у дома си",
+    "alias": "Желал бих да отида у дома си",
+    "ppt": "https://cloud.adventist.bg/index.php/s/ikxcqeya8gxb9Y6/download",
+    "text": "https://cloud.adventist.bg/index.php/s/SwMbMCoYgQsWd7e/download",
+    "notes": "https://cloud.adventist.bg/index.php/s/qD8oDBZFN7W6HoW/download",
+    "music": "",
+    "date": "2026-02-26",
+    "originalTitle": "Ich möchte heim, mich ziehts dem",
+    "categoryMain": "Копнеж за небесната родина",
+    "categorySub": ""
   },
   {
     "number": 130,
@@ -755,7 +833,7 @@
     "number": 140,
     "title": "Бог е силен мой помощник",
     "alias": "",
-    "ppt": "https://cloud.adventist.bg/index.php/s/jaa94mAf2eBpKFn/download",
+    "ppt": "https://cloud.adventist.bg/index.php/s/gyzarpqgjo4ngQt/download",
     "text": "https://cloud.adventist.bg/index.php/s/AozW3jNCqz7iFMJ/download",
     "notes": "https://cloud.adventist.bg/index.php/s/5DQCwpMfpqNwB5F/download",
     "music": "https://cloud.adventist.bg/index.php/s/HopqaHoZHxiYQ7p/download",
@@ -954,6 +1032,32 @@
     "originalTitle": "What a Wonderful Savior",
     "categoryMain": "Исус Христос",
     "categorySub": "Възхвала на Христос"
+  },
+  {
+    "number": 210,
+    "title": "Напред, Исус ви води",
+    "alias": "Напред вси за Исуса",
+    "ppt": "https://cloud.adventist.bg/index.php/s/4AgqsXTMyazwpQQ/download",
+    "text": "https://cloud.adventist.bg/index.php/s/xfcTiGK94ZjsFGe/download",
+    "notes": "https://cloud.adventist.bg/index.php/s/SAfokbtQ23nBe7K/download",
+    "music": "",
+    "date": "2026-02-26",
+    "originalTitle": "Stand Up! Stand Up for Jesus",
+    "categoryMain": "Християнски живот",
+    "categorySub": "Духовна борба и победа"
+  },
+  {
+    "number": 219,
+    "title": "Скала вечна е Исус за нас",
+    "alias": "",
+    "ppt": "https://cloud.adventist.bg/index.php/s/QKCt5gfy25t2oMS/download",
+    "text": "https://cloud.adventist.bg/index.php/s/RaFT7ppetE8n7wE/download",
+    "notes": "https://cloud.adventist.bg/index.php/s/6qRQyijG822GdfR/download",
+    "music": "",
+    "date": "2026-02-26",
+    "originalTitle": "We’ll Build on the Rock",
+    "categoryMain": "Християнски живот",
+    "categorySub": "Вяра и упование в Бога"
   },
   {
     "number": 223,
@@ -1656,6 +1760,32 @@
     "originalTitle": "Les anges dans nos campagnes",
     "categoryMain": "Исус Христос",
     "categorySub": "Рождение на Христос"
+  },
+  {
+    "number": 547,
+    "title": "На кръста",
+    "alias": "",
+    "ppt": "https://cloud.adventist.bg/index.php/s/W5n4sPJqKD4g2WP/download",
+    "text": "https://cloud.adventist.bg/index.php/s/2eDEHyneKSxAAKL/download",
+    "notes": "https://cloud.adventist.bg/index.php/s/gmCP2Fx6zX3KtPM/download",
+    "music": "",
+    "date": "2026-02-26",
+    "originalTitle": "At the Cross",
+    "categoryMain": "Исус Христос",
+    "categorySub": "Страдания, смърт и възкресение"
+  },
+  {
+    "number": 548,
+    "title": "Бог идва",
+    "alias": "",
+    "ppt": "https://cloud.adventist.bg/index.php/s/f4gdHySM2odzHQF/download",
+    "text": "https://cloud.adventist.bg/index.php/s/QcKQsNfx7Gqok7W/download",
+    "notes": "https://cloud.adventist.bg/index.php/s/9yPXdaY3kYRqbXX/download",
+    "music": "",
+    "date": "2026-02-26",
+    "originalTitle": "The Lord Is Coming",
+    "categoryMain": "Исус Христос",
+    "categorySub": "Второ Пришествие и вечен живот"
   },
   {
     "number": 552,

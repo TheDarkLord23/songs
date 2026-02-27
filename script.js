@@ -19,6 +19,7 @@ const mainOrder = [
   "Божието слово",
   "Молитва и посвещение",
   "Християнски живот",
+  "Копнеж за небесната родина",
   "Мисия и служене",
   "Специални поводи",
 ];
@@ -49,6 +50,7 @@ const subOrder = {
     "Покаяние и обръщане",
     "Вяра и упование в Бога",
     "Радост и мир в Бога",
+    "Духовна борба и победа",
     "Християнски характер",
     "Братство и единство",
   ],
@@ -142,7 +144,7 @@ function updateRoundedRow() {
   rowEls.forEach((r) => r.classList.remove("last-visible"));
 
   const visibleRows = Array.from(rowEls).filter(
-    (r) => window.getComputedStyle(r).display !== "none"
+    (r) => window.getComputedStyle(r).display !== "none",
   );
 
   const lastVisible = visibleRows[visibleRows.length - 1];
@@ -159,7 +161,7 @@ function updateRowBackgrounds() {
 
   // Only consider visible rows for striping
   const visibleRows = allRows.filter(
-    (r) => window.getComputedStyle(r).display !== "none"
+    (r) => window.getComputedStyle(r).display !== "none",
   );
 
   visibleRows.forEach((row, index) => {
@@ -185,7 +187,7 @@ function applyFilters() {
 
     // text match
     const matchText = activeQueryWords.every((w) =>
-      songWords.some((sw) => sw.startsWith(w))
+      songWords.some((sw) => sw.startsWith(w)),
     );
 
     // category match
@@ -481,7 +483,7 @@ function updateNewBadges() {
       if (!badge) {
         titleCell.insertAdjacentHTML(
           "afterbegin",
-          '<img src="new.png" alt="Нова песен" class="new-badge" style="margin-right:16px; width:40px">'
+          '<img src="new.png" alt="Нова песен" class="new-badge" style="margin-right:16px; width:40px">',
         );
       }
     } else {
