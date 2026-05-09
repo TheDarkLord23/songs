@@ -631,8 +631,8 @@
     "music": "",
     "date": "2026-05-07",
     "originalTitle": "I Have Heard of a Savior's Love",
-    "categoryMain": "",
-    "categorySub": ""
+    "categoryMain": "Исус Христос",
+    "categorySub": "Спасение в Христос"
   },
   {
     "number": 92,
@@ -670,8 +670,8 @@
     "music": "",
     "date": "2026-05-07",
     "originalTitle": "Rock of Ages",
-    "categoryMain": "",
-    "categorySub": ""
+    "categoryMain": "Исус Христос",
+    "categorySub": "Спасение в Христос"
   },
   {
     "number": 99,
@@ -826,7 +826,7 @@
     "music": "",
     "date": "2026-05-07",
     "originalTitle": "On Jordan's Stormy Banks I Stand",
-    "categoryMain": "",
+    "categoryMain": "Копнеж за небесната родина",
     "categorySub": ""
   },
   {
@@ -839,7 +839,7 @@
     "music": "",
     "date": "2026-05-07",
     "originalTitle": "Beautiful, Glorious Zion",
-    "categoryMain": "",
+    "categoryMain": "Копнеж за небесната родина",
     "categorySub": ""
   },
   {
@@ -930,8 +930,8 @@
     "music": "",
     "date": "2026-05-07",
     "originalTitle": "Yield Not to Temptation",
-    "categoryMain": "",
-    "categorySub": ""
+    "categoryMain": "Християнски живот",
+    "categorySub": "Християнски характер"
   },
   {
     "number": 146,
@@ -994,8 +994,8 @@
     "music": "",
     "date": "2026-05-07",
     "originalTitle": "Harre, meine Seele",
-    "categoryMain": "",
-    "categorySub": ""
+    "categoryMain": "Християнски живот",
+    "categorySub": "Вяра и упование в Бога"
   },
   {
     "number": 167,
@@ -1070,7 +1070,7 @@
     "music": "",
     "date": "2026-05-07",
     "originalTitle": "I Need Thee Every Hour",
-    "categoryMain": "",
+    "categoryMain": "Молитва и посвещение",
     "categorySub": ""
   },
   {
@@ -1919,7 +1919,7 @@
   },
   {
     "number": 557,
-    "title": "Най-чуден Спасител ",
+    "title": "Най-чуден Спасител",
     "alias": "",
     "ppt": "https://cloud.adventist.bg/index.php/s/d6kgWRaFdFNn8we/download",
     "text": "https://cloud.adventist.bg/index.php/s/fg8a8njdQio7ryx/download",
@@ -1927,8 +1927,8 @@
     "music": "",
     "date": "2026-05-07",
     "originalTitle": "He Hideth My Sou",
-    "categoryMain": "",
-    "categorySub": ""
+    "categoryMain": "Исус Христос",
+    "categorySub": "Възхвала на  Христос"
   },
   {
     "number": 559,
@@ -1940,7 +1940,7 @@
     "music": "",
     "date": "2026-05-07",
     "originalTitle": "Never Give Up",
-    "categoryMain": "",
-    "categorySub": ""
+    "categoryMain": "Исус Христос",
+    "categorySub": "Второ пришествие и вечен живот"
   }
 ]
